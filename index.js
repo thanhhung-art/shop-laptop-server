@@ -25,6 +25,13 @@ mongoose
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
+app.get("/", async (req, res) => {
+  try {
+    res.status(200).json("ok");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
